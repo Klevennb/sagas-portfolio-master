@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const sqlText = `
-    SELECT * FROM "projects"
+    SELECT * FROM "tags"
     `;
     pool.query(sqlText).then((sqlResult) => {
         console.log(sqlResult);
@@ -14,5 +14,4 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     });
 });
-
 module.exports = router;

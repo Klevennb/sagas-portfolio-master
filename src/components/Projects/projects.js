@@ -8,7 +8,7 @@ class Projects extends Component {
     getProjects() {
         const action = {type: 'GET_PROJECTS'};
         this.props.dispatch(action); 
-        console.log(this.props.reduxStore.projects);
+        // console.log(this.props.reduxStore.projects);
     
     }
     appendProjects = () => {
