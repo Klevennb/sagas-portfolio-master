@@ -14,14 +14,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 const styles = theme => ({
     card: {
         minWidth: 275,
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+        maxWidth: 400
     },
     media: {
-        height: 0,
+        height: 140,
+        // width:50,
         paddingTop: '56.25%', // 16:9
     },
     title: {
@@ -53,15 +50,18 @@ class Projects extends Component {
             return <Card className={classes.card}>
                     <CardHeader
                 title= {project.name}
-                subheader= {project.date_completed}
+                subheader= {project.language}
                     />
-                    {/* <CardMedia
+                    <CardMedia
                         className={classes.media}
-                        image="../../../public/images/goat_small.jpg"
-                    /> */}
+                    image="https://giffiles.alphacoders.com/120/thumb-120222.jpg"
+                    />
                     <CardContent>
                         <Typography component="p">
                             {project.description}
+                        </Typography>
+                        <Typography component="p">
+                            {project.date_completed}
                         </Typography>
                     </CardContent>
                     </Card>

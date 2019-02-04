@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const sqlText = `
-    SELECT "projects"."name", "description", "thumbnail", "website", "github", "date_completed", "tags"."name" FROM "projects"
+    SELECT "projects"."name", "description", "thumbnail", "website", "github", "date_completed", "tags"."name" AS "language" FROM "projects"
     JOIN "tags" ON "projects"."tag_id" = "tags"."id"
     `;
     pool.query(sqlText).then((sqlResult) => {

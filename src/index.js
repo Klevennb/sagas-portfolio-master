@@ -59,6 +59,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 // Used to store projects returned from the server
 const projects = (state = [], action) => {
+    console.log('!!!!!!!', state);
+    
     switch (action.type) {
         case 'SET_PROJECTS':
             return action.payload;
