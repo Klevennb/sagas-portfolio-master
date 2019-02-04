@@ -16,6 +16,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* rootSaga() {
     yield takeEvery('GET_PROJECTS', getProjects);
     yield takeEvery('GET_TAGS', getTags);
+    yield takeEvery('ADD_PROJECT', addProject);
 }
 
 function* getProjects() {
@@ -33,7 +34,6 @@ function* getProjects() {
 
 function* getTags() {
     console.log('in getTagss');
-
     try {
         const tagsResponse = yield axios.get('/tags');
         const nextAction = { type: 'SET_TAGS', payload: tagsResponse.data };
@@ -42,6 +42,13 @@ function* getTags() {
         console.log('Error making Tags GET request');
         alert('there was a problem');
     }
+}
+
+function* addProject(action) {
+    console.log('in addProject',action.payload);
+    // yield axios.post('/projects',{payload})
+    const nextAction = { type: 'GET_PROJECTS' };
+    yield put(nextAction);
 }
 
 // Create sagaMiddleware
@@ -59,8 +66,6 @@ const projects = (state = [], action) => {
 
 // Used to store the project tags (e.g. 'React', 'jQuery', 'Angular', 'Node.js')
 const tags = (state = [], action) => {
-    console.log('in tags reducer');
-    
     switch (action.type) {
         case 'SET_TAGS':
             return action.payload;
