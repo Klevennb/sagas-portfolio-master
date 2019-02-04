@@ -46,7 +46,7 @@ function* getTags() {
 
 function* addProject(action) {
     console.log('in addProject',action.payload);
-    // yield axios.post('/projects',{payload})
+    yield axios.post('/projects', action.payload);
     const nextAction = { type: 'GET_PROJECTS' };
     yield put(nextAction);
 }

@@ -152,7 +152,7 @@ class AdminInput extends Component {
                             <em>None</em>
                         </MenuItem>
                         {this.props.reduxStore.tags.map((tag) => {
-                            return <MenuItem key={tag.id} value={tag.name}>{tag.name}</MenuItem>
+                            return <MenuItem key={tag.id} value={tag.id}>{tag.name}</MenuItem>
                         }
                         )}
                     </Select>
