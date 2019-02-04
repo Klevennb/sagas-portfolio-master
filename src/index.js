@@ -33,7 +33,6 @@ function* getProjects() {
 }
 
 function* getTags() {
-    console.log('in getTagss');
     try {
         const tagsResponse = yield axios.get('/tags');
         const nextAction = { type: 'SET_TAGS', payload: tagsResponse.data };
@@ -45,10 +44,14 @@ function* getTags() {
 }
 
 function* addProject(action) {
-    console.log('in addProject',action.payload);
-    yield axios.post('/projects', action.payload);
-    const nextAction = { type: 'GET_PROJECTS' };
-    yield put(nextAction);
+    try {
+        yield axios.post('/projects', action.payload);
+        const nextAction = { type: 'GET_PROJECTS' };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('Error making project POST request');
+        alert('there was a problem');
+    }
 }
 
 // Create sagaMiddleware
