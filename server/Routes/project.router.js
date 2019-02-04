@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
 });
 router.post('/', (req,res) => {
     let newProject = req.body;
-    const sqlText = `INSERT INTO "projects" (name, description, website, github, date_completed, tag_id)
-                    VALUES ($1, $2, $3, $4, $5, $6)`;
-    pool.query(sqlText, [newProject.project, newProject.description, newProject.website, newProject.github, newProject.date, newProject.tag_id])
+    const sqlText = `INSERT INTO "projects" (name, description,thumbnail, website, github, date_completed, tag_id)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+    pool.query(sqlText, [newProject.project, newProject.description, newProject.image, newProject.website, newProject.github, newProject.date, newProject.tag])
       .then((response) => {
           console.log(response);
           res.sendStatus(200);

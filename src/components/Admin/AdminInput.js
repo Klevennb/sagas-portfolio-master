@@ -44,7 +44,8 @@ class AdminInput extends Component {
         github: '',
         tag: '',  //in selector
         website: '',
-        description: ''
+        description: '',
+        image: ''
     };
     componentDidMount() {
         this.getTags();
@@ -82,6 +83,11 @@ class AdminInput extends Component {
     handleDescriptionChange = description => event => {
         this.setState({
             description: event.target.value
+        });
+    };
+    handleImageChange = image => event => {
+        this.setState({
+            image: event.target.value
         });
     };
 
@@ -129,6 +135,13 @@ class AdminInput extends Component {
                     className={classes.textField}
                     value={this.state.website}
                     onChange={this.handleWebsiteChange('website')}
+                    margin="normal"
+                />
+                <TextField
+                    label="Image URL"
+                    className={classes.textField}
+                    value={this.state.image}
+                    onChange={this.handleImageChange('image')}
                     margin="normal"
                 />
                 <TextField
